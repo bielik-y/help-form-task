@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { styled, ThemeProvider } from 'styled-components'
+import { theme } from 'styles/theme'
+import GlobalFonts from 'styles/fonts'
+import Form from 'components/Form'
+
+const Container = styled.div`
+  margin: auto;
+  margin-bottom: 80px;
+  padding: 20px 20px;
+  max-width: 1280px;
+
+  @media ${({ theme }) => theme.media.sm} {
+    padding: 10px 40px;
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <GlobalFonts />
+      <Container>
+        <Form />
+      </Container>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
